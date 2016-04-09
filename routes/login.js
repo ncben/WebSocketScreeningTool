@@ -25,8 +25,8 @@ module.exports = function(app, express, io, connection){
 					req.session.user = user.email;
 					req.session.firstname = user.name;	
 					
-					res.cookie('user',req.session.user, {domain: '.dja.com', path: '/', maxAge: 60000000, httpOnly: false, secure: false})
-					res.cookie('name',req.session.firstname, {domain: '.dja.com', path: '/', maxAge: 60000000, httpOnly: false, secure: false})
+					res.cookie('user',req.session.user, {domain: '.xxx.com', path: '/', maxAge: 60000000, httpOnly: false, secure: false})
+					res.cookie('name',req.session.firstname, {domain: '.xxx.com', path: '/', maxAge: 60000000, httpOnly: false, secure: false})
 					
 					
 					res.json({ name: user.name });	
