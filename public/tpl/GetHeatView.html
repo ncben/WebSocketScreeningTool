@@ -1,0 +1,32 @@
+
+<div class="container">
+  <div class="page-header-top">
+    <div class="container">
+      <h2>Screening Week <%=escape(heat.week)%>, Heat <%=escape(heat.heat)%> </h2>
+      <div class="col-md-12"> Users currently screening this heat:
+        <div id="usersInHeat">
+          <ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div id="socketError" style="display:none;">
+      <div class="alert alert-danger fade in" style=""> <span></span> </div>
+    </div>
+    
+    <div id="screenEntryAllScreened" style="display:none;">
+      <h4 class="text-center" style="color:green; font-weight:bold;"> Approval limit has reached and you're done screening this heat!   </h4>
+    </div>
+    
+    <div id="screenEntryAlreadyScreened" style="display:none;">
+      <h4 class="text-center" style="color:red; font-weight:bold;">Whoops.. The entry you were looking at has just been screened by another screener. </h4>
+      <h5 class="text-center" style="padding-top:25px;">We'll get you a new entry in a few seconds...</h5>
+    </div>
+    <div id="screenEntryAwaitingNew">
+      <h5 class="text-center">Waiting for new entry.. </h5>
+    </div>
+    <div id="screenEntry"></div>
+  </div>
+</div>

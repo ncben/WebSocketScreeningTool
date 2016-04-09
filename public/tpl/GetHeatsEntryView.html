@@ -1,0 +1,39 @@
+<% function linkify(inputText) {
+    var replacedText, replacePattern1, replacePattern2, replacePattern3;
+
+    //URLs starting with http://, https://, or ftp://
+    replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+    replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
+
+    //URLs starting with "www." (without // before it, or it'd re-link the ones done above).
+    replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+    replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a>');
+
+    //Change email addresses to mailto:: links.
+    replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
+    replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
+
+    return replacedText;
+}
+%>
+
+<div class="col-md-4 dataCache" data-handle="<%= _.escape(Entry.user_screen_name) %>" data-id="<%= _.escape(Entry.tweet_id) %>"><%= linkify(_.escape(Entry.text)) %></div>
+<div class="col-md-6">
+  <% if(Stat.week != 5){ %>
+  <% if(Entry.media_url_https){ %>
+  <a href="<%= _.escape(Entry.media_url_https) %>" target="_blank"><img src="<%= _.escape(Entry.media_url_https) %>" style="max-width: 100%; max-height: 500px; margin-bottom:15px;" /></a>
+  <% }else{ %>
+  <h4>NO IMAGE ATTACHED TO TWEET</h4>
+  <% } %>
+  <% }else{ %>
+  <% if(Entry.url){ %>
+  <a href="<%= _.escape(Entry.url) %>" target="_blank">Click here to view Vine video</a>
+  <% }else{ %>
+  <h4>NO VIDEO ATTACHED TO TWEET</h4>
+  <% } %>
+  <% } %>
+</div>
+<div class="col-md-2">
+  <button id="approveEntry" class="btn btn-success btn-large  btn-block"><i class=" icon-ok"></i> Approve</button>
+  <button id="rejectEntry" class="btn btn-danger btn-large btn-block" style="margin-top:15px;"><i class="icon-remove"></i> Reject</button>
+</div>

@@ -1,0 +1,16 @@
+
+<% _.each(Heats, function(Heat){ %>
+<tr>
+  <td><%= _.escape(Heat.week) %></td>
+  <td><%= _.escape(Heat.heat) %></td>
+  <td><%= new Date(_.escape(Heat.start)).toString().split(' GMT')[0] + ' (' + new Date(_.escape(Heat.start)).toString().split('(')[1] %></td>
+  <td><%= new Date(_.escape(Heat.ending)).toString().split(' GMT')[0] + ' (' + new Date(_.escape(Heat.ending)).toString().split('(')[1] %></td>
+  <td><span style="font-weight:bold; <%=(Heat.total == Heat.prize_amount) ?  'color:black' : (Heat.total < Heat.prize_amount) ? 'color:green' : 'color:red'%> "><%= _.escape(Heat.total).toString() %></span>/<span style=""><%= _.escape(Heat.prize_amount).toString() %></span></td>
+  <td><% if(Heat.total < Heat.prize_amount){ %>
+  <a href="#GetHeat/<%= _.escape(Heat.week) %>.<%= _.escape(Heat.heat) %>">Screen this heat</a>
+  <% }else{ %>
+  	<span style="color: green">Complete</span>
+  <% } %>
+  </td>
+</tr>
+<% }); %>
