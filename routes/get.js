@@ -171,18 +171,18 @@ module.exports = function(app, express, io, connection){
 	
 								// create reusable transport method (opens pool of SMTP connections)
 								var smtpTransport = nodemailer.createTransport("SMTP",{
-									host: "secure.emailsrvr.com", // hostname
+									host: "xxx.com", // hostname
 									secureConnection: true, // use SSL
 									port: 465, // port for secure SMTP
 									auth: {
-										user: "itdept@dja.com",
-										pass: "sh0n3n%Jump"
+										user: "",
+										pass: ""
 									}
 								});
 	
 								var mailOptions = {
 									from: "Lays Screening Tool <itdept@dja.com>", // sender address
-									to: "mobrien@deepfocus.net, ppadode@deepfocus.net, llim@deepfocus.net, fdefelice@deepfocus.net, bschwab@dja.com, kthaw@dja.com, mmattia@dja.com, bwong@dja.com", // list of receivers
+									to: "test@test.com", // list of receivers
 									subject: "All "+results.prize_amount+ " Prizes Taken for Week "+socket.heat.split('.')[0] + ', Heat '+socket.heat.split('.')[1], // Subject line
 									text: "All prizes for this week/heat have been taken. Please tweet that there are no prizes left.", // plaintext body
 									html: "<b>All prizes for this week/heat have been taken. Please tweet that there are no prizes left.</b><br><br>Prizes taken: "+results.total+"<br><br>Last Qualifying Timestamp: "+new Date(ts[0].created_at_et).toString() // html body
