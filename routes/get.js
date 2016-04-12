@@ -181,7 +181,7 @@ module.exports = function(app, express, io, connection){
 								});
 	
 								var mailOptions = {
-									from: "Lays Screening Tool <itdept@dja.com>", // sender address
+									from: "Lays Screening Tool <test@test.com>", // sender address
 									to: "test@test.com", // list of receivers
 									subject: "All "+results.prize_amount+ " Prizes Taken for Week "+socket.heat.split('.')[0] + ', Heat '+socket.heat.split('.')[1], // Subject line
 									text: "All prizes for this week/heat have been taken. Please tweet that there are no prizes left.", // plaintext body
